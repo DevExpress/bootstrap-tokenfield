@@ -233,9 +233,14 @@
       if (!createEvent.attrs || createEvent.isDefaultPrevented()) return
 
       var $token = $('<div class="token" />')
-            .append('<span class="token-label" />')
-            .append('<a href="#" class="close" tabindex="-1">&times;</a>')
-            .data('attrs', attrs)
+            .append('<span class="token-label" />');
+
+      if (this.options.allowDeleting)
+          $token.append('<a href="#" class="close" tabindex="-1">&times;</a>');
+      else
+          $token.append('<a href="#" tabindex="-1">&nbsp;</a>');
+
+       $token.data('attrs', attrs);
 
       // Insert token into HTML
       if (this.$input.hasClass('tt-input')) {
