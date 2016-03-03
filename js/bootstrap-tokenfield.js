@@ -588,12 +588,16 @@
 
             this.activate( $prevToken )
           } else {
-            this.remove(e)
+            if (this.options.allowDeleting) {
+                this.remove(e)
+            }
           }
           break
 
         case 46: // delete
-          this.remove(e, 'next')
+          if (this.options.allowDeleting) {
+              this.remove(e, 'next')
+          }
           break
       }
       this.lastKeyUp = e.keyCode
@@ -1016,6 +1020,7 @@
     html: true,
     allowEditing: true,
     allowPasting: true,
+    allowDeleting: true,
     limit: 0,
     autocomplete: {},
     typeahead: {},
