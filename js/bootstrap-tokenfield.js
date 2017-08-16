@@ -282,11 +282,11 @@
       // Listen to events on token
       $token
         .on('mousedown',  function (e) {
-          if (_self._disabled || _self._readonly) return false
+          if (_self._disabled) return false
           _self.preventDeactivation = true
         })
         .on('click',    function (e) {
-          if (_self._disabled || _self._readonly) return false
+          if (_self._disabled) return false
           _self.preventDeactivation = false
 
           if (e.ctrlKey || e.metaKey) {
@@ -297,7 +297,7 @@
           _self.activate( $token, e.shiftKey, e.shiftKey )
         })
         .on('dblclick', function (e) {
-          if (_self._disabled || _self._readonly || !_self.options.allowEditing ) return false
+          if (_self._disabled || !_self.options.allowEditing ) return false
           _self.edit( $token )
         })
 
